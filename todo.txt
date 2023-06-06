@@ -1,0 +1,7 @@
+ - add multibot connectivity through threading
+ - add message that notifies of the connection of a new bot
+ - add command that allows you to select the bot you want to connect to or broadcast to to all bots 
+ - add funnctionality that shows the bot you are currently communicating with
+ - add functionility that allows you to close a connection for  single bot
+ - add functionality that alows you to select from a list of commands
+ - add functionility that shpw waiting for connection if all the bots are disconnected
