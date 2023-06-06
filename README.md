@@ -21,21 +21,6 @@ The repository consists of the following files:
 
 Each script is designed to be run independently, and they have specific use cases. Before running any script, please ensure that you have the necessary dependencies installed and configured properly. Detailed instructions for running each script can be found within their respective files as comments or in the accompanying documentation.
 
-## Contributing
-
-I welcome contributions to this repository, including bug fixes, new features, and improvements. If you would like to contribute, please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch for your changes.
-3. Make your modifications and additions.
-4. Test your changes thoroughly.
-5. Commit your changes with clear and descriptive commit messages.
-6. Push your branch to your forked repository.
-7. Open a pull request, describing the changes you made.
-
-## License
-
-The scripts in this repository are provided under the [MIT License](LICENSE.md). Please review the license file for more details.
 
 ## Contact
 
