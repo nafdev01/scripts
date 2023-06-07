@@ -43,7 +43,7 @@ class C2Server:
 
         command = ""
 
-        while command != "exit" or command != "Exit" or command != "EXIT":
+        while command.lower() != "exit":
             if self.active_bot:
                 command = input(
                     colored("Enter a command: ", "magenta", "on_black", ["bold"])
@@ -60,12 +60,12 @@ class C2Server:
                 self.select_bot()
                 continue
 
-            if command == "select_bot":
+            if command.lower() == "select_bot":
                 self.select_bot()
                 continue
 
             self.active_bot.send(command.encode())
-            message = self.active_bot.recv(1024).decode()
+            message = self.active_bot.recv(4048).decode()
             print(message)
 
         self.shutdown_server()

