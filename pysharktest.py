@@ -1,7 +1,7 @@
 import pyshark
 
 # Create a capture object, specifying the network interface
-capture = pyshark.LiveCapture(interface='eth0')
+capture = pyshark.LiveCapture(interface="eth0")
 
 # Start capturing packets
 capture.sniff()

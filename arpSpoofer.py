@@ -1,6 +1,7 @@
 # arpSpoofer.py
-from scapy.all import *
 import sys
+
+from scapy.all import *
 from termcolor import *
 
 
