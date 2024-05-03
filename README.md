@@ -8,14 +8,14 @@ The repository consists of the following files:
 
 - `arpDetector.py`: This script detects Address Resolution Protocol (ARP) spoofing attacks within a local network.
 - `arpSpoofer.py`: This script enables ARP spoofing, allowing the manipulation of ARP tables to intercept network traffic.
+- `cleanup_targets.py`: This script collects and cleans up lists of target IP addresses from a specified files.
 - `echoClient.py`: This script implements a simple client for testing echo server functionality.
 - `echoServer.py`: This script sets up an echo server that echoes back any message received from the client.
-- `openai_generator.py`: This script utilizes OpenAI's language model to generate text for various cybersecurity-related tasks.
+- `get_hosts_xml.py`: This is a script that extracts IP addresses found during an nmap host discovery scan from an XML file.
+- `get_rmi_targets.sh`: # This is a bash script that parses through an nmap gnmap file that contains the results of a modiifed pingsweep done by aggressively scanning common rmi ports and returns the live hosts.
+- `inPath.sh` - This is a bash script that checks if a specified command is in the PATH environment variable.
+- `pingSweep.sh`: This is a bash script that performs a fast and simple ping sweep on a specified /24 subnet.
 - `pysharktest.py`: This script demonstrates the usage of PyShark, a Python wrapper for the Wireshark network analysis tool.
-- `reverseShell.py`: This script creates a reverse shell, establishing a connection from a target machine to a listening server.
-- `shellServer.py`: This script acts as a remote shell server, allowing command execution on a target machine.
-- `test_code.py`: This script contains test code for verifying the functionality of other scripts.
-- `todo.txt`: This file contains a list of tasks and ideas for future enhancements or additions to the scripts.
 
 ## Usage
 
