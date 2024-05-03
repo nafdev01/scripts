@@ -8,4 +8,5 @@ packaging==24.0
 pathspec==0.12.1
 platformdirs==4.2.1
 pyshark==0.6
+scapy==2.5.0
 termcolor==2.4.0

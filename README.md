@@ -22,9 +22,5 @@ The repository consists of the following files:
 Each script is designed to be run independently, and they have specific use cases. Before running any script, please ensure that you have the necessary dependencies installed and configured properly. Detailed instructions for running each script can be found within their respective files as comments or in the accompanying documentation.
 
 
-## Contact
-
-If you have any questions, suggestions, or feedback related to these scripts, please feel free to contact me at [naftaldev@gmail.com](mailto:naftaldev@gmail.com).
-
 Happy scripting and stay secure!
 
